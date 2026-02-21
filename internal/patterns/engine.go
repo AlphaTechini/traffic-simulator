@@ -38,8 +38,8 @@ func NewEngine() *Engine {
 	// Register built-in patterns
 	e.Register("constant", NewConstantPattern)
 	e.Register("ramp", NewRampPattern)
+	e.Register("step", NewStepPattern)
 	// TODO: Implement remaining patterns in separate commits
-	// e.Register("step", NewStepPattern)
 	// e.Register("wave", NewWavePattern)
 	// e.Register("burst", NewBurstPattern)
 	// e.Register("custom", NewCustomPattern)
