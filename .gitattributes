@@ -1,0 +1,20 @@
+# Language Statistics Configuration
+# Prioritize Go in GitHub language stats
+
+# Treat frontend as secondary (optional - uncomment if you want to de-emphasize Svelte)
+# *.svelte linguist-documentation
+# web/**/*.js linguist-documentation
+# web/**/*.css linguist-documentation
+
+# Mark generated/binary files
+*.mod linguist-generated
+*.sum linguist-generated
+traffic-sim linguist-vendored
+*.exe linguist-vendored
+
+# Ensure Go files are counted
+*.go linguist-language=Go
+
+# Documentation doesn't count towards stats
+*.md linguist-documentation
+LICENSE linguist-documentation
