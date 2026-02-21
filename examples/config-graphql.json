@@ -1,0 +1,65 @@
+{
+  "base_url": "http://localhost:4000",
+  "concurrent_users": 50,
+  "duration": "3m",
+  "rampup_time": "20s",
+  "auto_scan": true,
+  "timeout": "30s",
+  "max_connections": 100,
+  "auth_header": "",
+  "user_actions": [],
+  "graphql": {
+    "enabled": true,
+    "endpoint": "/graphql",
+    "introspection": true,
+    "batch_size": 1,
+    "queries": [
+      {
+        "name": "GetAllUsers",
+        "query": "query { users { id name email } }",
+        "weight": 10,
+        "operation": "query"
+      },
+      {
+        "name": "GetProducts",
+        "query": "query { products { id title price } }",
+        "weight": 8,
+        "operation": "query"
+      },
+      {
+        "name": "SearchPosts",
+        "query": "query($search: String!) { posts(search: $search) { id title content } }",
+        "variables": {
+          "search": "test"
+        },
+        "weight": 6,
+        "operation": "query"
+      }
+    ],
+    "mutations": [
+      {
+        "name": "CreateUser",
+        "mutation": "mutation($input: CreateUserInput!) { createUser(input: $input) { id name } }",
+        "variables": {
+          "input": {
+            "name": "Test User",
+            "email": "test@example.com"
+          }
+        },
+        "weight": 3
+      },
+      {
+        "name": "AddComment",
+        "mutation": "mutation($postId: ID!, $content: String!) { addComment(postId: $postId, content: $content) { id content } }",
+        "variables": {
+          "postId": "123",
+          "content": "Great post!"
+        },
+        "weight": 5
+      }
+    ]
+  },
+  "report_interval": "5s",
+  "output_format": "text",
+  "verbose": false
+}

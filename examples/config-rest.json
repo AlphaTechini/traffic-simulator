@@ -1,0 +1,79 @@
+{
+  "base_url": "http://localhost:3000",
+  "concurrent_users": 100,
+  "duration": "2m",
+  "rampup_time": "15s",
+  "auto_scan": false,
+  "timeout": "30s",
+  "max_connections": 200,
+  "auth_header": "",
+  "user_actions": [
+    {
+      "name": "Browse Products",
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/api/products",
+          "min_delay_ms": 100,
+          "max_delay_ms": 500,
+          "error_rate": 0.02
+        },
+        {
+          "method": "GET",
+          "path": "/api/products/:id",
+          "min_delay_ms": 50,
+          "max_delay_ms": 300,
+          "error_rate": 0.01
+        }
+      ],
+      "think_time_ms": 2000,
+      "weight": 10
+    },
+    {
+      "name": "User Authentication",
+      "endpoints": [
+        {
+          "method": "POST",
+          "path": "/api/auth/login",
+          "min_delay_ms": 200,
+          "max_delay_ms": 1000,
+          "error_rate": 0.05,
+          "custom_headers": {
+            "Content-Type": "application/json"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/api/user/profile",
+          "min_delay_ms": 100,
+          "max_delay_ms": 400,
+          "error_rate": 0.02
+        }
+      ],
+      "think_time_ms": 3000,
+      "weight": 5
+    },
+    {
+      "name": "Search Operations",
+      "endpoints": [
+        {
+          "method": "GET",
+          "path": "/api/search?q=laptop",
+          "min_delay_ms": 500,
+          "max_delay_ms": 2000,
+          "error_rate": 0.03
+        }
+      ],
+      "think_time_ms": 1500,
+      "weight": 8
+    }
+  ],
+  "graphql": {
+    "enabled": false,
+    "endpoint": "/graphql"
+  },
+  "report_interval": "5s",
+  "output_format": "text",
+  "random_seed": 0,
+  "verbose": false
+}
