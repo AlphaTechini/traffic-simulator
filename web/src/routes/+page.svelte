@@ -133,7 +133,7 @@
             placeholder="https://api.example.com/graphql"
             class="input flex-1"
           />
-          <button class="btn-primary" on:click={addUrl}>
+          <button class="btn-primary" onclick={addUrl}>
             Add Endpoint
           </button>
         </div>
@@ -154,12 +154,12 @@
                     type="url"
                     bind:value={url.url}
                     class="input font-mono text-sm"
-                    on:change={() => saveScenario()}
+                    onchange={() => saveScenario()}
                   />
                 </div>
                 <button
                   class="text-red-600 hover:text-red-800 ml-4"
-                  on:click={() => removeUrl(url.id)}
+                  onclick={() => removeUrl(url.id)}
                 >
                   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -173,7 +173,7 @@
                   <select
                     bind:value={url.config.method}
                     class="input"
-                    on:change={() => saveScenario()}
+                    onchange={() => saveScenario()}
                   >
                     <option>GET</option>
                     <option>POST</option>
@@ -188,7 +188,7 @@
                   <select
                     bind:value={url.config.content_type}
                     class="input"
-                    on:change={() => saveScenario()}
+                    onchange={() => saveScenario()}
                   >
                     <option>application/json</option>
                     <option>application/graphql</option>
@@ -204,7 +204,7 @@
                     bind:value={url.config.weight}
                     min="1"
                     class="input"
-                    on:change={() => saveScenario()}
+                    onchange={() => saveScenario()}
                   />
                 </div>
                 
@@ -213,7 +213,7 @@
                   <select
                     bind:value={url.config.request_type}
                     class="input"
-                    on:change={() => saveScenario()}
+                    onchange={() => saveScenario()}
                   >
                     <option>rest</option>
                     <option>graphql</option>
@@ -229,7 +229,7 @@
                 <textarea
                   bind:value={url.config.payload}
                   class="input font-mono text-sm h-32"
-                  on:change={() => saveScenario()}
+                  onchange={() => saveScenario()}
                 ></textarea>
                 <div class="mt-2 text-xs text-gray-500">
                   Available variables: {{uuid}}, {{email}}, {{timestamp}}, {{increment}}, {{random_string}}
@@ -269,7 +269,7 @@
       </div>
       
       <div class="flex gap-4">
-        <button class="btn-primary text-lg px-8" on:click={startSimulation}>
+        <button class="btn-primary text-lg px-8" onclick={startSimulation}>
           🚀 Start Simulation
         </button>
         <button class="btn-secondary">
