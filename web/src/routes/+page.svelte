@@ -115,6 +115,9 @@
         class="border-2 border-dashed rounded-lg p-8 text-center transition-colors"
         class:blue-200={isDragging}
         class:border-blue-400={isDragging}
+        role="button"
+        tabindex="0"
+        aria-label="Drag and drop URLs here or paste below"
         ondragover={(e) => { e.preventDefault(); isDragging = true; }}
         ondragleave={() => isDragging = false}
         ondrop={handleDrop}
@@ -160,6 +163,8 @@
                 <button
                   class="text-red-600 hover:text-red-800 ml-4"
                   onclick={() => removeUrl(url.id)}
+                  aria-label="Remove endpoint"
+                  title="Remove endpoint"
                 >
                   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -169,10 +174,11 @@
               
               <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Method</label>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" id="method-label-{url.id}">Method</label>
                   <select
                     bind:value={url.config.method}
                     class="input"
+                    aria-labelledby="method-label-{url.id}"
                     onchange={() => saveScenario()}
                   >
                     <option>GET</option>
@@ -184,10 +190,11 @@
                 </div>
                 
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Content Type</label>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" id="content-type-label-{url.id}">Content Type</label>
                   <select
                     bind:value={url.config.content_type}
                     class="input"
+                    aria-labelledby="content-type-label-{url.id}"
                     onchange={() => saveScenario()}
                   >
                     <option>application/json</option>
@@ -198,21 +205,23 @@
                 </div>
                 
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Weight</label>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" id="weight-label-{url.id}">Weight</label>
                   <input
                     type="number"
                     bind:value={url.config.weight}
                     min="1"
                     class="input"
+                    aria-labelledby="weight-label-{url.id}"
                     onchange={() => saveScenario()}
                   />
                 </div>
                 
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">Request Type</label>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" id="request-type-label-{url.id}">Request Type</label>
                   <select
                     bind:value={url.config.request_type}
                     class="input"
+                    aria-labelledby="request-type-label-{url.id}"
                     onchange={() => saveScenario()}
                   >
                     <option>rest</option>
@@ -223,12 +232,13 @@
               </div>
               
               <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">
+                <label class="block text-sm font-medium text-gray-700 mb-1" id="payload-label-{url.id}">
                   JSON Payload (use {{variable}} syntax)
                 </label>
                 <textarea
                   bind:value={url.config.payload}
                   class="input font-mono text-sm h-32"
+                  aria-labelledby="payload-label-{url.id}"
                   onchange={() => saveScenario()}
                 ></textarea>
                 <div class="mt-2 text-xs text-gray-500">
@@ -247,18 +257,18 @@
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Total Users</label>
-          <input type="number" class="input" value="10000" min="1" />
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="total-users">Total Users</label>
+          <input type="number" id="total-users" class="input" value="10000" min="1" />
         </div>
         
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Duration</label>
-          <input type="text" class="input" value="30m" placeholder="e.g., 30m, 1h" />
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="duration">Duration</label>
+          <input type="text" id="duration" class="input" value="30m" placeholder="e.g., 30m, 1h" />
         </div>
         
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Traffic Pattern</label>
-          <select class="input">
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="traffic-pattern">Traffic Pattern</label>
+          <select id="traffic-pattern" class="input">
             <option>Constant</option>
             <option>Ramp Up</option>
             <option>Step</option>
