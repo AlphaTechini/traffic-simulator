@@ -284,6 +284,5 @@ netstat -an | grep :3000 | grep ESTABLISHED | wc -l
 
 ---
 
-**Built with ❤️ for maximum performance**  
 **Version**: 1.2.0  
 **Last Updated**: February 20, 2026
