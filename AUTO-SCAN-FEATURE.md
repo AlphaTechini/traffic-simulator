@@ -331,6 +331,3 @@ Now run:
 
 It will automatically discover your `/users` endpoint!
 
----
-
-**Built with ❤️ for developers who want to test before breaking production**
