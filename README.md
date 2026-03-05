@@ -165,11 +165,3 @@ GOOS=darwin GOARCH=amd64 go build -o traffic-sim-macos ./cmd
 # Windows
 GOOS=windows GOARCH=amd64 go build -o traffic-sim-windows.exe ./cmd
 ```
-
-## 📝 License
-
-MIT License - See LICENSE file
-
----
-
-**Built with ❤️ for testing personal projects before they go to production**
